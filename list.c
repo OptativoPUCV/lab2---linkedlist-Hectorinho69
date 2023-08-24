@@ -70,6 +70,7 @@ void pushFront(List * list, void * data) {
     list->head->prev = newNode;
     newNode->next=list->head;
   }
+  //si no hay tail, entonces el nuevo nodo sera tambien la cola
   if(list->tail==NULL){
     list->tail=newNode;
   }
