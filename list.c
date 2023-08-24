@@ -92,6 +92,7 @@ void pushCurrent(List * list, void * data) {
   }
   newNode->prev = list->current;
   list->current->next = newNode;
+  
   if(newNode->next==NULL){
     list->tail = newNode;
   }
@@ -108,7 +109,23 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    return NULL;
+  Node *anterior=list->current->prev;
+  Node *siguiente=list->current->next;
+  //como se pasara el current al siguiente, debo guardar el dato del eliminado
+  void *datoEliminado=list->current->data;
+  
+  if(anterior){
+    anterior->next = list->current->next;
+  }
+  if(siguiente){
+    siguiente->prev = list->current->prev;
+  }
+  
+  
+  
+  
+  
+    return datoEliminado;
 }
 
 void cleanList(List * list) {
