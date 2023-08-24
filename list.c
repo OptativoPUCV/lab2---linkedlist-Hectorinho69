@@ -35,15 +35,15 @@ List * createList() {
 }
 
 void * firstList(List * list) {
-  if(list->head == NULL || list == NULL){return NULL;}
+  if(list->head == NULL || list == NULL){return NULL;}//se toman en cuenta los casos donde alguna variable necesaria sea NULL
   
-  list->current = list->head;
+  list->current = list->head;//se cambia el current por el head de la lista
     return list->current->data;
 }
 
 void * nextList(List * list) {
   if(list==NULL || list->current==NULL || list->current->next==NULL){return NULL;}
-  
+  //los casos donde algo es null incluido a donde queremos mover el current
   list->current = list->current->next;
     return list->current->data;
 }
@@ -64,6 +64,15 @@ void * prevList(List * list) {
 }
 
 void pushFront(List * list, void * data) {
+  Node *newNode = createNode(data);
+  if(list->head){
+    //establezco el orden entre ambos nodos
+    list->head->prev = newNode;
+    newNode->next=list->head;
+  }
+  //luego reemplazp el head por el nuevo nodo
+  //si no existe el head se hace solo esto
+    list->head = newNode;
 }
 
 void pushBack(List * list, void * data) {
