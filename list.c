@@ -70,6 +70,9 @@ void pushFront(List * list, void * data) {
     list->head->prev = newNode;
     newNode->next=list->head;
   }
+  if(list->tail==NULL){
+    list->tail=newNode;
+  }
   //luego reemplazp el head por el nuevo nodo
   //si no existe el head se hace solo esto
     list->head = newNode;
