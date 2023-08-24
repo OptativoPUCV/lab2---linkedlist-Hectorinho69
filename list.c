@@ -58,8 +58,9 @@ void * lastList(List * list) {
 
 void * prevList(List * list) {
   if(list==NULL || list->current==NULL || list->current->prev==NULL){return NULL;}
+  //casos donde no haya datos o este el current en un extremo
 
-  list->current = list->current->prev;
+  list->current = list->current->prev; //se asigna los punteros correspondientes
     return list->current->data;
 }
 
@@ -93,7 +94,7 @@ void pushCurrent(List * list, void * data) {
   newNode->prev = list->current;
   list->current->next = newNode;
   
-  if(newNode->next==NULL){
+  if(newNode->next==NULL){//caso donde el nuevo nodo sea la cola
     list->tail = newNode;
   }
 }
