@@ -114,25 +114,22 @@ void * popCurrent(List * list) {
   //como se pasara el current al siguiente, debo guardar el dato del eliminado
   void *datoEliminado=list->current->data;
   
-  if(anterior){
+  if(anterior){//si hay un dato anterior se apunta al siguiente del eliminado
     anterior->next = list->current->next;
-  }else{
+  }else{//si no hay un anterior y hay un siguiente se asigna el siguiente como head
     if(siguiente){
       list->head=siguiente;
     }
   }
-  if(siguiente){
+  if(siguiente){//si hay siguiente se apunta al anterior del eliminado
     siguiente->prev = list->current->prev;
-  }else{
+  }else{//si no hay siguiente pero hay anterior se asigna como cola al anterior
     if(anterior){
       list->tail = anterior;
     }
   }
-
   
   list->current = siguiente;
-  
-  
   
     return datoEliminado;
 }
